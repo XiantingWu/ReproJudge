@@ -1,0 +1,22 @@
+{
+  "checks": [
+    {
+      "artifact": "report.txt",
+      "contains": "Reproduced successfully",
+      "type": "text_contains"
+    },
+    {
+      "artifact": "report.txt",
+      "pattern": "seed=[0-9]+",
+      "type": "text_regex"
+    }
+  ],
+  "domain": "synthetic",
+  "expected_artifacts": [
+    "report.txt"
+  ],
+  "paper": "synthetic:reference-text",
+  "schema_version": 1,
+  "task_id": "reference-text",
+  "timeout_seconds": 30
+}

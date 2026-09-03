@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "task_id": "repo-discovery-transformer-xl",
+  "domain": "language-modeling",
+  "paper": "1901.02860v3",
+  "title": "Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context",
+  "instructions": "Identify the canonical public implementation repository associated with this pinned paper revision. Write discovery.json containing a repository_url key whose value is the canonical HTTPS GitHub repository URL.",
+  "tags": ["scientific-seed", "repository-discovery", "language-modeling"],
+  "expected_artifacts": ["discovery.json"],
+  "checks": [{"type":"json_equals","artifact":"discovery.json","json_path":"repository_url","expected":"https://github.com/kimiyoung/transformer-xl"}],
+  "timeout_seconds": 300,
+  "metadata": {"benchmark_shard":"scientific-repository-discovery-v1","evidence_url":"https://arxiv.org/abs/1901.02860v3","scope":"paper-to-canonical-public-repository discovery only"}
+}

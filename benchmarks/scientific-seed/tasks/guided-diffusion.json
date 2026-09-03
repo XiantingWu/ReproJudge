@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "task_id": "repo-discovery-guided-diffusion",
+  "domain": "generative-vision",
+  "paper": "2105.05233v4",
+  "title": "Diffusion Models Beat GANs on Image Synthesis",
+  "instructions": "Identify the canonical public implementation repository associated with this pinned paper revision. Write discovery.json containing a repository_url key whose value is the canonical HTTPS GitHub repository URL.",
+  "tags": ["scientific-seed", "repository-discovery", "generative-vision"],
+  "expected_artifacts": ["discovery.json"],
+  "checks": [{"type":"json_equals","artifact":"discovery.json","json_path":"repository_url","expected":"https://github.com/openai/guided-diffusion"}],
+  "timeout_seconds": 300,
+  "metadata": {"benchmark_shard":"scientific-repository-discovery-v1","evidence_url":"https://arxiv.org/abs/2105.05233v4","scope":"paper-to-canonical-public-repository discovery only"}
+}

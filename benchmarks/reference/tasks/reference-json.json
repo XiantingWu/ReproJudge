@@ -1,0 +1,25 @@
+{
+  "checks": [
+    {
+      "abs_tol": 0.02,
+      "artifact": "metrics.json",
+      "json_path": "accuracy",
+      "target": 0.9,
+      "type": "json_numeric"
+    },
+    {
+      "artifact": "metrics.json",
+      "expected": "ok",
+      "json_path": "status",
+      "type": "json_equals"
+    }
+  ],
+  "domain": "synthetic",
+  "expected_artifacts": [
+    "metrics.json"
+  ],
+  "paper": "synthetic:reference-json",
+  "schema_version": 1,
+  "task_id": "reference-json",
+  "timeout_seconds": 30
+}

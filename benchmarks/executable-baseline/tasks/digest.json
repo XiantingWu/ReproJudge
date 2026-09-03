@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "task_id": "executable-digest",
+  "domain": "deterministic-baseline",
+  "paper": "synthetic:executable-baseline",
+  "title": "Compute a deterministic SHA-256 digest",
+  "instructions": "Read metadata.operation and metadata.payload, compute the SHA-256 hexadecimal digest of the UTF-8 payload, and write baseline.json in the ReproJudge output directory.",
+  "expected_artifacts": [
+    "baseline.json"
+  ],
+  "checks": [
+    {
+      "type": "json_equals",
+      "artifact": "baseline.json",
+      "json_path": "sha256",
+      "expected": "21dbbeb18c4a1fac1787ce65700b9e51a6f4d5458c03ddcaf42d98496157a7d3"
+    }
+  ],
+  "metadata": {
+    "operation": "sha256",
+    "payload": "reprojudge-executable-baseline-v1"
+  },
+  "timeout_seconds": 10
+}

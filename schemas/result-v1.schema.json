@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/XiantingWu/ReproJudge/main/schemas/result-v1.schema.json",
+  "title": "ReproJudge result v1",
+  "type": "object",
+  "required": [
+    "result_schema_version",
+    "run_id",
+    "task_id",
+    "domain",
+    "status",
+    "duration_seconds",
+    "command",
+    "artifacts",
+    "checks",
+    "passed"
+  ],
+  "properties": {
+    "result_schema_version": {"const": 1},
+    "run_id": {"type": "string", "pattern": "^[0-9a-f]{12}$"},
+    "task_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,199}$"},
+    "domain": {"type": "string", "minLength": 1, "maxLength": 200, "pattern": "^(?=[\\s\\S]*\\S)[^\\u0000]+$"},
+    "status": {"enum": ["passed", "failed", "agent_error", "timeout", "launch_error", "telemetry_error"]},
+    "exit_code": {"type": ["integer", "null"]},
+    "timed_out": {"type": "boolean"},
+    "error": {"type": ["string", "null"], "maxLength": 131072},
+    "started_at": {"type": "string", "minLength": 1, "maxLength": 128},
+    "duration_seconds": {"type": "number", "minimum": 0},
+    "command": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 256,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 16384,
+        "pattern": "^[^\\u0000]+$"
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "maxItems": 128,
+      "items": {"$ref": "#/$defs/artifactRecord"}
+    },
+    "checks": {
+      "type": "array",
+      "maxItems": 512,
+      "items": {"$ref": "#/$defs/checkResult"}
+    },
+    "stdout_path": {"const": "stdout.log"},
+    "stderr_path": {"const": "stderr.log"},
+    "stdout_truncated": {"type": "boolean"},
+    "stderr_truncated": {"type": "boolean"},
+    "python_version": {"type": "string", "minLength": 1, "maxLength": 64},
+    "platform": {"type": "string", "minLength": 1, "maxLength": 1024},
+    "evaluator_version": {"type": "string", "minLength": 1, "maxLength": 64},
+    "task_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "request_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "failure_taxonomy": {
+      "type": "array",
+      "maxItems": 64,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1, "maxLength": 128}
+    },
+    "telemetry": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "#/$defs/resultTelemetry"}
+      ]
+    },
+    "passed": {"type": "boolean"}
+  },
+  "$defs": {
+    "safeArtifact": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512,
+      "pattern": "^(?![~\\\\/])(?![A-Za-z]:)(?!\\s)(?![\\s\\S]*\\s$)(?![\\s\\S]*[\\\\/]{2})(?![\\s\\S]*[\\\\/]$)(?!\\.{1,2}(?:[\\\\/]|$))(?![\\s\\S]*[\\\\/]\\.{1,2}(?:[\\\\/]|$))[^\\u0000]+$"
+    },
+    "artifactRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "size_bytes", "sha256"],
+      "properties": {
+        "path": {"$ref": "#/$defs/safeArtifact"},
+        "size_bytes": {"type": "integer", "minimum": 0, "maximum": 268435456},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "checkResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "passed", "detail"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1, "maxLength": 1024},
+        "passed": {"type": "boolean"},
+        "detail": {"type": "string", "maxLength": 4096}
+      }
+    },
+    "historicalText": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      ]
+    },
+    "resultTelemetry": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "agent_name": {"$ref": "#/$defs/historicalText"},
+        "agent_version": {"$ref": "#/$defs/historicalText"},
+        "model": {"$ref": "#/$defs/historicalText"},
+        "provider": {"$ref": "#/$defs/historicalText"},
+        "token_usage": {"type": ["integer", "null"], "minimum": 0},
+        "model_cost_usd": {"type": ["number", "null"], "minimum": 0},
+        "interventions": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {"type": "string", "minLength": 1, "maxLength": 256}
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "passed"}}, "required": ["status"]},
+      "then": {"properties": {"passed": {"const": true}}},
+      "else": {"properties": {"passed": {"const": false}}}
+    },
+    {
+      "if": {"properties": {"status": {"const": "timeout"}}, "required": ["status"]},
+      "then": {"properties": {"timed_out": {"const": true}}},
+      "else": {"properties": {"timed_out": {"const": false}}}
+    }
+  ],
+  "additionalProperties": true
+}

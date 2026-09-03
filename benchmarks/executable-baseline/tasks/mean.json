@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "task_id": "executable-mean",
+  "domain": "deterministic-baseline",
+  "paper": "synthetic:executable-baseline",
+  "title": "Compute a deterministic arithmetic mean",
+  "instructions": "Read metadata.operation and metadata.values, compute the requested result, and write baseline.json in the ReproJudge output directory.",
+  "expected_artifacts": [
+    "baseline.json"
+  ],
+  "checks": [
+    {
+      "type": "json_numeric",
+      "artifact": "baseline.json",
+      "json_path": "result",
+      "target": 2.6666666666666665,
+      "abs_tol": 1e-12,
+      "rel_tol": 0.0
+    }
+  ],
+  "metadata": {
+    "operation": "mean",
+    "values": [1.25, 2.75, 4.0]
+  },
+  "timeout_seconds": 10
+}

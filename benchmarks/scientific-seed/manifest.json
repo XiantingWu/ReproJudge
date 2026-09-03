@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "shard_id": "scientific-repository-discovery-v1",
+  "scope": "paper-to-canonical-public-repository discovery only",
+  "description": "Fifteen curated, revision-pinned real-paper tasks for evaluating repository discovery. This shard does not claim experiment execution, numerical reproduction, or scientific correctness.",
+  "curation_source": "revision-pinned arXiv real-paper corpus curated for ReproJudge 0.3.0",
+  "curation_source_blob_sha": "73f65ca4e8a4eb62bc7443502466dda919776c03bae935278d5988496cee755d",
+  "case_count": 15,
+  "tasks": [
+    "tasks/clip.json",
+    "tasks/lora.json",
+    "tasks/albert.json",
+    "tasks/guided-diffusion.json",
+    "tasks/improved-diffusion.json",
+    "tasks/detr.json",
+    "tasks/transformer-xl.json",
+    "tasks/bert.json",
+    "tasks/swin-transformer.json",
+    "tasks/moby.json",
+    "tasks/pysindy.json",
+    "tasks/jax-md.json",
+    "tasks/adaaf-pinn.json",
+    "tasks/quantum-hsgpq.json",
+    "tasks/tn-decoder-3d.json"
+  ]
+}

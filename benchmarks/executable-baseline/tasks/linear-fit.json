@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "task_id": "executable-linear-fit",
+  "domain": "deterministic-baseline",
+  "paper": "synthetic:executable-baseline",
+  "title": "Fit a deterministic straight line",
+  "instructions": "Read metadata.operation, metadata.x, and metadata.y, compute the least-squares slope and intercept, and write baseline.json in the ReproJudge output directory.",
+  "expected_artifacts": [
+    "baseline.json"
+  ],
+  "checks": [
+    {
+      "type": "json_numeric",
+      "artifact": "baseline.json",
+      "json_path": "slope",
+      "target": 2.0,
+      "abs_tol": 1e-12,
+      "rel_tol": 0.0
+    },
+    {
+      "type": "json_numeric",
+      "artifact": "baseline.json",
+      "json_path": "intercept",
+      "target": 1.0,
+      "abs_tol": 1e-12,
+      "rel_tol": 0.0
+    }
+  ],
+  "metadata": {
+    "operation": "linear_fit",
+    "x": [0.0, 1.0, 2.0, 3.0],
+    "y": [1.0, 3.0, 5.0, 7.0]
+  },
+  "timeout_seconds": 10
+}

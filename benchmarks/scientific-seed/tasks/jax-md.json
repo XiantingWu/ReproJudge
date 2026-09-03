@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "task_id": "repo-discovery-jax-md",
+  "domain": "differentiable-physics",
+  "paper": "1912.04232v2",
+  "title": "JAX, M.D.: A Framework for Differentiable Physics",
+  "instructions": "Identify the canonical public implementation repository associated with this pinned paper revision. Write discovery.json containing a repository_url key whose value is the canonical HTTPS GitHub repository URL.",
+  "tags": ["scientific-seed", "repository-discovery", "differentiable-physics"],
+  "expected_artifacts": ["discovery.json"],
+  "checks": [{"type":"json_equals","artifact":"discovery.json","json_path":"repository_url","expected":"https://github.com/jax-md/jax-md"}],
+  "timeout_seconds": 300,
+  "metadata": {"benchmark_shard":"scientific-repository-discovery-v1","evidence_url":"https://arxiv.org/abs/1912.04232v2","scope":"paper-to-canonical-public-repository discovery only"}
+}

@@ -1,0 +1,17 @@
+# Force LF line endings on every platform so release-source byte identity is
+# stable across GitHub-hosted Linux, macOS, and Windows checkout lanes.
+* text=auto eol=lf
+
+# Explicitly keep binary assets untouched by any line-ending normalization.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.zip binary
+*.gz binary
+*.whl binary
+*.pyc binary

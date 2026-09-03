@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "task_id": "repo-discovery-tn-decoder-3d",
+  "domain": "quantum-error-correction",
+  "paper": "2310.10722v2",
+  "title": "Tensor Network Decoding Beyond 2D",
+  "instructions": "Identify the canonical public implementation repository associated with this pinned paper revision. Write discovery.json containing a repository_url key whose value is the canonical HTTPS GitHub repository URL.",
+  "tags": ["scientific-seed", "repository-discovery", "quantum-error-correction"],
+  "expected_artifacts": ["discovery.json"],
+  "checks": [{"type":"json_equals","artifact":"discovery.json","json_path":"repository_url","expected":"https://github.com/ChriPiv/tndecoder3d"}],
+  "timeout_seconds": 300,
+  "metadata": {"benchmark_shard":"scientific-repository-discovery-v1","evidence_url":"https://arxiv.org/abs/2310.10722v2","scope":"paper-to-canonical-public-repository discovery only"}
+}

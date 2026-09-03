@@ -1,0 +1,157 @@
+{
+  "claims": {
+    "arbitrary_paper_reproducibility_proven": false,
+    "reference_suite_scope": "deterministic evaluator mechanics only",
+    "scientific_correctness_proven": false,
+    "scientific_seed_scope": "15 revision-pinned real-paper repository-discovery tasks only"
+  },
+  "measurement_provenance": {
+    "arch": "ARM64",
+    "github_run_id": "33339118110",
+    "measured_source_head_sha": "1be4d72fda7a5be5189264d7a8e0f340750d965b",
+    "mode": "github-actions-hosted",
+    "os": "macOS",
+    "python_version": "3.11.9",
+    "repository": "XiantingWu/ReproJudge",
+    "runner_environment": "github-hosted",
+    "runner_name": "GitHub Actions 1000001038",
+    "workflow": "ReproJudge trusted release audit"
+  },
+  "reference_suite": {
+    "case_count": 4,
+    "cases": [
+      {
+        "result_sha256": "0f658ac0c8424e139d371d50fee08fdaeed95ef61ecc3c539b6e8ff0a31506b0",
+        "status": "passed",
+        "task_id": "reference-hash",
+        "task_sha256": "7cd38d88f46e955e20d03f044c0474ec86b553b2e153419e77c202228a1f4c14"
+      },
+      {
+        "result_sha256": "020bcc17e5af719c5735bf8b3e1c5d75986ab78d3c831d6a63fe00a21516b885",
+        "status": "passed",
+        "task_id": "reference-json",
+        "task_sha256": "819db3c4b7b3ccdc2de26910324372c6f2f2c0d2ec242ee89dddb4c7653f250a"
+      },
+      {
+        "result_sha256": "871811e0ffe69cf1a1366d7ef02b6e45f5333c0b179b51bdbf123ebcf61f7271",
+        "status": "passed",
+        "task_id": "reference-text",
+        "task_sha256": "c4e74e5fc5c5145926e126a14b20b6d111041a66587d65f8520dd6dde3c26e68"
+      },
+      {
+        "result_sha256": "79025f9602940419eed5bc12c4b2e7f875882639f1b198865b2b692bccb6f0e0",
+        "status": "passed",
+        "task_id": "reference-zero-artifact",
+        "task_sha256": "96a4eaed9c81e4b7d7fdd2dad307a9fe5f1285fd0f076a0582ce988b14adddf2"
+      }
+    ],
+    "gate_passed": true,
+    "manifest_sha256": "07cfdfc8a5bbb4826bebea80ee1570a37cccb87c1dcb8b13f3aa46f0f4caa713",
+    "reference_agent_sha256": "e629fed081b3f2cdc69a19cb3b51c7d67ea751de278312eaed5668e2d5a1f708",
+    "suite_sha256": "a4dde19fc770116619842629794d963ffda989a83480866c903e26c4c43e28a0"
+  },
+  "release": "0.3.0",
+  "schema_version": 4,
+  "scientific_seed": {
+    "case_count": 15,
+    "curation_source_blob_sha": "73f65ca4e8a4eb62bc7443502466dda919776c03bae935278d5988496cee755d",
+    "gate_passed": true,
+    "manifest_sha256": "6a1b525f08f69aedaabea8dc85476deec8659881fc8b3110c08dc2bfcf010457",
+    "scope": "paper-to-canonical-public-repository discovery only",
+    "shard_sha256": "374c03a55ed5454a58f008b669aa327dba0ed11f1fc1ce245ae75eff32f00bd1",
+    "tasks": [
+      {
+        "paper": "2308.04073v1",
+        "repository_url": "https://github.com/LeapLabTHU/AdaAFforPINNs",
+        "task_id": "repo-discovery-adaaf-pinn",
+        "task_sha256": "eaa842b0c047cd9154da7596687fdac53ffe95bc2f03fb346d048b5a4ded9ce3"
+      },
+      {
+        "paper": "1909.11942v6",
+        "repository_url": "https://github.com/google-research/albert",
+        "task_id": "repo-discovery-albert",
+        "task_sha256": "aceeb66593705481e45118983cb069f5bd786b38dbaf2d86e98277c4d2826de6"
+      },
+      {
+        "paper": "1810.04805v2",
+        "repository_url": "https://github.com/google-research/bert",
+        "task_id": "repo-discovery-bert",
+        "task_sha256": "8ee3522f8759dc2e77fd19e955a1046a934199dce317280f2e3fd9f2eac307ba"
+      },
+      {
+        "paper": "2103.00020v1",
+        "repository_url": "https://github.com/openai/CLIP",
+        "task_id": "repo-discovery-clip",
+        "task_sha256": "2ef468b2edec94c9c30c62c06282ca72dfb823e4c21836d179590a2ea8a283b1"
+      },
+      {
+        "paper": "2005.12872v3",
+        "repository_url": "https://github.com/facebookresearch/detr",
+        "task_id": "repo-discovery-detr",
+        "task_sha256": "28d4172c74834dd7eb189c51291fe140893426fa2a63ed10d4816bbac9e2aeb9"
+      },
+      {
+        "paper": "2105.05233v4",
+        "repository_url": "https://github.com/openai/guided-diffusion",
+        "task_id": "repo-discovery-guided-diffusion",
+        "task_sha256": "e36a5aa00d68302015eff4d05b755cf49ad3340e0ee053969c682bdfe721a2af"
+      },
+      {
+        "paper": "2102.09672v1",
+        "repository_url": "https://github.com/openai/improved-diffusion",
+        "task_id": "repo-discovery-improved-diffusion",
+        "task_sha256": "4ef95fefda4b3118cddca8fa194ac90041e36bef511ca5f40d52f2512a5f010a"
+      },
+      {
+        "paper": "1912.04232v2",
+        "repository_url": "https://github.com/jax-md/jax-md",
+        "task_id": "repo-discovery-jax-md",
+        "task_sha256": "0e9fee943470ab2b3166c86509f89e3776e27f376a2f1c15784b34c90163e6f7"
+      },
+      {
+        "paper": "2106.09685v2",
+        "repository_url": "https://github.com/microsoft/LoRA",
+        "task_id": "repo-discovery-lora",
+        "task_sha256": "88b4d6641851aa8acacc030cd0748b653f502a450e86316801c5990a18e75146"
+      },
+      {
+        "paper": "2105.04553v2",
+        "repository_url": "https://github.com/SwinTransformer/Transformer-SSL",
+        "task_id": "repo-discovery-moby",
+        "task_sha256": "87a5a1f0f0359b8246600391a28e95f7fd9ce5782b51d11ea7130f8bb98c0ba5"
+      },
+      {
+        "paper": "2004.08424v1",
+        "repository_url": "https://github.com/dynamicslab/pysindy",
+        "task_id": "repo-discovery-pysindy",
+        "task_sha256": "112872e2318aba0f1c0753e9e6781d0e1fca6e972166c819a0a767747ae0c9ec"
+      },
+      {
+        "paper": "2502.14467v1",
+        "repository_url": "https://github.com/cagalvisf/Quantum_HSGPQ",
+        "task_id": "repo-discovery-quantum-hsgpq",
+        "task_sha256": "bc51dc4e4687d78025bd2d5cf0e9e290be2f46e4e870c126ae18b4a1b53d9000"
+      },
+      {
+        "paper": "2103.14030v2",
+        "repository_url": "https://github.com/microsoft/Swin-Transformer",
+        "task_id": "repo-discovery-swin-transformer",
+        "task_sha256": "b47aac76d33b27eec7f99e002bd0df5d38c943577954b125491fb0ca0eb17bd4"
+      },
+      {
+        "paper": "2310.10722v2",
+        "repository_url": "https://github.com/ChriPiv/tndecoder3d",
+        "task_id": "repo-discovery-tn-decoder-3d",
+        "task_sha256": "6f3ff10b36c638cf4aa9559829f7eba41783bd92b8172fa2580406d52a1de2dd"
+      },
+      {
+        "paper": "1901.02860v3",
+        "repository_url": "https://github.com/kimiyoung/transformer-xl",
+        "task_id": "repo-discovery-transformer-xl",
+        "task_sha256": "bc006b5a8efd07f38989d783770a57ef3d2a742aa2bde21acfb5c00ac0843bf4"
+      }
+    ]
+  },
+  "source_fingerprint": "2c108387341aa1f076e4ecdc0e66db938e6a58eef828f959f08a831a5584332b",
+  "source_tree_sha256": "2c108387341aa1f076e4ecdc0e66db938e6a58eef828f959f08a831a5584332b"
+}

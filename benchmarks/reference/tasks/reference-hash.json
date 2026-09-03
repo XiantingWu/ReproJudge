@@ -1,0 +1,17 @@
+{
+  "checks": [
+    {
+      "artifact": "artifact.bin",
+      "sha256": "515d4a8373097fd8b9575a5f93ca72020e1397cc02db1055a344009f06f898ba",
+      "type": "file_sha256"
+    }
+  ],
+  "domain": "synthetic",
+  "expected_artifacts": [
+    "artifact.bin"
+  ],
+  "paper": "synthetic:reference-hash",
+  "schema_version": 1,
+  "task_id": "reference-hash",
+  "timeout_seconds": 30
+}

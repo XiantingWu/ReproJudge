@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: ReproJudge
+message: "If ReproJudge contributes to published research, please cite the exact Git commit used; after a tagged release, cite the exact released version."
+type: software
+authors:
+  - name: XiantingWu
+repository-code: "https://github.com/XiantingWu/ReproJudge"
+url: "https://github.com/XiantingWu/ReproJudge"
+license: MIT

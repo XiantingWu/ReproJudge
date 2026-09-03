@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/XiantingWu/ReproJudge/main/schemas/agent-telemetry-v1.schema.json",
+  "title": "ReproJudge agent telemetry v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "agent_name": {"$ref": "#/$defs/boundedText"},
+    "agent_version": {"$ref": "#/$defs/boundedText"},
+    "model": {"$ref": "#/$defs/boundedText"},
+    "provider": {"$ref": "#/$defs/boundedText"},
+    "token_usage": {"type": "integer", "minimum": 0},
+    "model_cost_usd": {"type": "number", "minimum": 0},
+    "interventions": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {"$ref": "#/$defs/boundedText"}
+    }
+  },
+  "$defs": {
+    "boundedText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "pattern": "^(?=.*\\S)[^\\u0000-\\u001F\\u007F]+$"
+    }
+  }
+}

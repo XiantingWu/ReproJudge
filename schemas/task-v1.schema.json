@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/XiantingWu/ReproJudge/main/schemas/task-v1.schema.json",
+  "title": "ReproJudge task v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task_id", "domain", "paper", "expected_artifacts"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "task_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,199}$"},
+    "domain": {"type": "string", "minLength": 1, "maxLength": 200, "pattern": "^(?=[\\s\\S]*\\S)[^\\u0000]+$"},
+    "paper": {"type": "string", "minLength": 1, "maxLength": 4096, "pattern": "^(?=[\\s\\S]*\\S)[^\\u0000]+$"},
+    "expected_artifacts": {
+      "type": "array", "maxItems": 128, "uniqueItems": true,
+      "items": {"$ref": "#/$defs/safeArtifact"}
+    },
+    "title": {"type": "string", "maxLength": 500, "pattern": "^[^\\u0000]*$"},
+    "instructions": {"type": "string", "maxLength": 20000, "pattern": "^[^\\u0000]*$"},
+    "tags": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {"type": "string", "minLength": 1, "maxLength": 128, "pattern": "^(?=[\\s\\S]*\\S)[^\\u0000]+$"}
+    },
+    "timeout_seconds": {"type": "number", "exclusiveMinimum": 0.000001, "maximum": 86400},
+    "metadata": {
+      "type": "object",
+      "maxProperties": 128,
+      "propertyNames": {"type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[^\\u0000]+$"}
+    },
+    "checks": {
+      "type": "array", "maxItems": 256,
+      "items": {"$ref": "#/$defs/check"}
+    }
+  },
+  "$defs": {
+    "safeArtifact": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512,
+      "pattern": "^(?![~\\\\/])(?![A-Za-z]:)(?!\\s)(?![\\s\\S]*\\s$)(?![\\s\\S]*[\\\\/]{2})(?![\\s\\S]*[\\\\/]$)(?!\\.{1,2}(?:[\\\\/]|$))(?![\\s\\S]*[\\\\/]\\.{1,2}(?:[\\\\/]|$))[^\\u0000]+$"
+    },
+    "jsonPath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512,
+      "pattern": "^(?=[\\s\\S]*\\S)[^\\u0000]+$"
+    },
+    "boundedCheckText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096,
+      "pattern": "^(?=[\\s\\S]*\\S)[^\\u0000]+$"
+    },
+    "check": {
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "artifact"],
+          "properties": {"type": {"const": "artifact_exists"}, "artifact": {"$ref": "#/$defs/safeArtifact"}}
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "artifact", "json_path", "expected"],
+          "properties": {"type": {"const": "json_equals"}, "artifact": {"$ref": "#/$defs/safeArtifact"}, "json_path": {"$ref": "#/$defs/jsonPath"}, "expected": {}}
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "artifact", "json_path", "target"],
+          "properties": {"type": {"const": "json_numeric"}, "artifact": {"$ref": "#/$defs/safeArtifact"}, "json_path": {"$ref": "#/$defs/jsonPath"}, "target": {"type": "number"}, "abs_tol": {"type": "number", "minimum": 0}, "rel_tol": {"type": "number", "minimum": 0}}
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "artifact", "contains"],
+          "properties": {"type": {"const": "text_contains"}, "artifact": {"$ref": "#/$defs/safeArtifact"}, "contains": {"$ref": "#/$defs/boundedCheckText"}}
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "artifact", "pattern"],
+          "properties": {"type": {"const": "text_regex"}, "artifact": {"$ref": "#/$defs/safeArtifact"}, "pattern": {"$ref": "#/$defs/boundedCheckText"}}
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "artifact", "sha256"],
+          "properties": {"type": {"const": "file_sha256"}, "artifact": {"$ref": "#/$defs/safeArtifact"}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "checks": [],
+  "domain": "synthetic",
+  "expected_artifacts": [],
+  "paper": "synthetic:reference-zero-artifact",
+  "schema_version": 1,
+  "task_id": "reference-zero-artifact",
+  "timeout_seconds": 30
+}

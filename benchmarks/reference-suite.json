@@ -1,0 +1,10 @@
+{
+  "description": "Deterministic release reference suite. It validates evaluator mechanics; it is not a claim of scientific reproduction quality.",
+  "schema_version": 1,
+  "tasks": [
+    "benchmarks/reference/tasks/reference-hash.json",
+    "benchmarks/reference/tasks/reference-json.json",
+    "benchmarks/reference/tasks/reference-text.json",
+    "benchmarks/reference/tasks/reference-zero-artifact.json"
+  ]
+}
